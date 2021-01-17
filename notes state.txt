@@ -1,0 +1,155 @@
+Q]What are the types of random variables ?
+-> 2 types 
+	1.Numeric  
+		1.Discrete - 1 ,200, 545 (whole number)
+		2.Continues - 10.3 ,12 ,14.5 ,11.6 (It is in the given number, Ex: 10-15)
+ 	2.Categorical
+		Ex : Male/Female , Good/Bad/Better
+
+Q]what is distribution ?
+-> frequency of each value in data.
+	pd.value_counts(x[:,1])
+	from collections import Counter
+	c=Counter(x[:,1])
+stat book page no : 10
+
+Q] waht is uniform distribution ?
+-> all values have the same Frequency.
+stat book page no : 10
+
+Q]waht is probability mass function (PMF) ?
+-> It is nothing but the % probability of each value occurance.
+stat book page no : 10
+
+Q]How to normalize the data ?
+-> frequency of value / N
+stat book page no : 10
+
+Q] describe Guassian or Normal Distribution ?
+->	1.It contains any kind of Random values.
+	2.In G.D.(mean,std)
+	3.Now find mean = (1/N sum (Xi))
+	4.Now find Variance => (1/N sum(Xi-mean))
+	5.Now Find Standard Deviation => [sqrt(Variance)].
+ now what is Guassian distribution = It defines that from mean how far the other elements are 
+	distributed.	
+	
+	Empirical formula in Guassian Distribution-
+		it is one of property of G.D.
+		it defines the probability of data distributed within 1 Std. i.e 1std = 68%
+			2std = 90%
+			3std = 99.7%
+stat book page no : 1
+
+Q]Is the Guassian and Normal distribution are Same?
+-> Yes
+
+Q] why we check the distribution of data ?
+-> because to get the better accuraccy we have to scale down the data if the column follows normal 
+	distribution convert it to standard normal distribution(SND) by using standard scalar.
+	*if column follows log normal distribution convert it to normal distribution and apply 
+	and convert it to SND by Standard scalar and scale down.
+
+Q] how to convert log normal distribustion into standard normal distribution (z-score) 
+	(or) how to check whether random variable belonging to log normal distribution ?
+-> 	0.the data will in form of (tail extended at right side much) log normal distribution.
+	1.take log(Xi) off all values(log values)
+  	2.It will follow the Guassian Distribution. => G.D(mean,std)
+	3.Now convert this GD into SND 
+	4.SND formula = (Xi-mean)/std (i.e z-score)
+	5.Now apply standard scalar
+	
+Note :	random variable x belongs to log normal distribution if and only if log(Xi) belongs to 
+	Guassian or normal Distribution.
+stat book page no : 2
+
+Q] what is standard scalar ?
+-> it having the mean value=0 and standard deviation = 1.
+   it having the bell shaped curv.
+   
+
+--------------------------------------------------------------------------------------------------------
+Q] what is covariance ?
+-> It is the Quantifying(Knowing) relationship b/t two random variables.
+ cov(x,y)= 1/n sum [(Xi-X_bar)*(Yi-Y_bar)]
+ to get covariance df.cov()
+	here we get only +Ve or -Ve values 
+	if covariance = 0 then there is no correlation b/t variables.
+	in covariance we can't get the specific value.
+	for that we use pearsons correlation coefficient.
+
+Q] how to find correlation coefficient (karl pearsons coefficient) (r)?
+-> 1.find mean of x ,y
+   2.find covariance b/t x,y
+   3.find standard deviation for x & y
+	Stdx=sqrt(sum(x2/n)-(X_bar)2) & for y Stdy=sqrt(sum(y2/n)-(y_bar)2)
+   4.now find correlation coefficient (r)
+	r = [cov(x,y)/STDx * STDy]
+DEM book page no : 3,4
+
+Q] how to know whether a random variable belonging to Gaussian distribution or not ?
+-> use Chebyshev's Inequalty theorem
+	the probability of 1st std always fall within (1-1/k2)
+   1. probability of 1 STD is greater than (1-1/k2) 
+
+Q]Describe pearsons correlation coefficient ?
+-> it defines the relation b/t two variables.
+   if the two variable having same relation then we can drop one of the column.
+   Formula : [cov(x,y)/STDx * STDy)]
+   It is always b/t -1 to +1.
+   Here we can measure the strength of relation.
+DEM book page no : 3,4
+
+Q]Describe Pearsons rank correlation coefficient ?
+->It is used when the data is non linear.
+  Formula = cov(rank(x) rank(y))/(std(rank(x))std(rank(y))).
+ or = 1- [6 sum( d2) / n(n2-1)].
+ * it is having the accuracy greater than pearsons correlation coefficient.
+DEM book page no : 6
+
+Q] what is z-score ?
+-> it is nothing nut standard normal distribution of data.
+   it is standard scaler.
+	formula = (observations - mean)/STD
+		= (Xi-mean)/STD
+
+Q]what is percentile ?
+-> ex [1,2,3,4,5,6,7,8,9,10]
+	1 = 0% -it means 0 values are less than 1
+	2= 10% -it means 10% of the values less than 2
+	5= 50% -it means 40% of the values less than 5
+
+Q]Describe outliers ?
+-> outlier's are the some rare  values which occur's very less.
+    1.draw SND by applying z-score.
+    2.check for outliers which are not in the defined STD.
+    3. if their any values above the defined STD i.e are outliers.
+ 
+	Another method to find outliers - IQR (Inter Quartile Range)
+	1.find percentile.
+	2.take values b/t 25% and 75%.
+	3.below the 25% and above the 75% the values are outliers.
+	
+	IQR steps :
+	1.Arrange the data in increasing order
+	2.calculate first and third quartile
+	3.find inter quartile range(q3-q1)
+	4.find lower bound i.e q1*1.5
+	5.find upper bound i.e q3*1.5
+
+Q] when to use normalization and when to use standardizations?
+-> Normalization = it helps to scale features b/t 0-1.(min-max scaler)
+   Standardisation = it helps to scale down data based on standard normal distribution.[where mean=0,STD=1].
+
+	Normalization (or) X_norm = (X-X_min)/(X_max-X_min)
+
+	when have Euclidean_distance,gradient"D:\sabir\python\Datasets\Deep Learning fahad\Advanced house price prediction\train.csv" discent and the algorithms like KNN,K-means clusturing, 
+		all deep learning networks, Artificial neural network here we have to scale down.
+	when have decision tree,vbagging ,boosting don't scale down.
+	Note :mostly we have to use standard scaler.it performances better than min-max scaler.
+	Note :In most of the deep learning algorithms like CNN,ann we have to perform normalization.
+
+	conclusion :
+		    min-max 	: deep learning
+		standard scaler : Machine learning
+   
