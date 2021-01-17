@@ -143,7 +143,7 @@ Q] when to use normalization and when to use standardizations?
 
 	Normalization (or) X_norm = (X-X_min)/(X_max-X_min)
 
-	when have Euclidean_distance,gradient"D:\sabir\python\Datasets\Deep Learning fahad\Advanced house price prediction\train.csv" discent and the algorithms like KNN,K-means clusturing, 
+	when have Euclidean_distance,gradient discent and the algorithms like KNN,K-means clusturing, 
 		all deep learning networks, Artificial neural network here we have to scale down.
 	when have decision tree,vbagging ,boosting don't scale down.
 	Note :mostly we have to use standard scaler.it performances better than min-max scaler.
